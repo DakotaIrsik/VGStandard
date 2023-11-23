@@ -59,11 +59,4 @@ dotnet run VGStandard.Data.Importer.dll --skip-postgres --fill-elasticsearch="Yo
 dotnet run VGStandard.Data.Importer.dll --bulk-elasticsearch --bulk-postgres
 ```
 
-Contributing
 Contributions, issues, and feature requests are welcome. Feel free to check issues page if you want to contribute.
-
-
-Note: This README is a basic template and should be expanded based on your specific project needs and additional configurations.
-
-A brief description of what this project does and who it's for
-
