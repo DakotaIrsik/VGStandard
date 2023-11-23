@@ -1,0 +1,158 @@
+[
+    {
+        "regionID": 1,
+        "regionName": "Asia"
+    },
+    {
+        "regionID": 2,
+        "regionName": "Australia"
+    },
+    {
+        "regionID": 3,
+        "regionName": "Brazil"
+    },
+    {
+        "regionID": 4,
+        "regionName": "Canada"
+    },
+    {
+        "regionID": 5,
+        "regionName": "China"
+    },
+    {
+        "regionID": 6,
+        "regionName": "Denmark"
+    },
+    {
+        "regionID": 7,
+        "regionName": "Europe"
+    },
+    {
+        "regionID": 8,
+        "regionName": "Finland"
+    },
+    {
+        "regionID": 9,
+        "regionName": "France"
+    },
+    {
+        "regionID": 10,
+        "regionName": "Germany"
+    },
+    {
+        "regionID": 11,
+        "regionName": "Hong Kong"
+    },
+    {
+        "regionID": 12,
+        "regionName": "Italy"
+    },
+    {
+        "regionID": 13,
+        "regionName": "Japan"
+    },
+    {
+        "regionID": 14,
+        "regionName": "Korea"
+    },
+    {
+        "regionID": 15,
+        "regionName": "Netherlands"
+    },
+    {
+        "regionID": 16,
+        "regionName": "Russia"
+    },
+    {
+        "regionID": 17,
+        "regionName": "Spain"
+    },
+    {
+        "regionID": 18,
+        "regionName": "Sweden"
+    },
+    {
+        "regionID": 19,
+        "regionName": "Taiwan"
+    },
+    {
+        "regionID": 20,
+        "regionName": "Unknown"
+    },
+    {
+        "regionID": 21,
+        "regionName": "USA"
+    },
+    {
+        "regionID": 22,
+        "regionName": "World"
+    },
+    {
+        "regionID": 23,
+        "regionName": "Asia, Australia"
+    },
+    {
+        "regionID": 24,
+        "regionName": "Brazil, Korea"
+    },
+    {
+        "regionID": 25,
+        "regionName": "Japan, Europe"
+    },
+    {
+        "regionID": 26,
+        "regionName": "Japan, Korea"
+    },
+    {
+        "regionID": 27,
+        "regionName": "Japan, USA"
+    },
+    {
+        "regionID": 28,
+        "regionName": "USA, Australia"
+    },
+    {
+        "regionID": 29,
+        "regionName": "USA, Europe"
+    },
+    {
+        "regionID": 30,
+        "regionName": "USA, Korea"
+    },
+    {
+        "regionID": 31,
+        "regionName": "Europe, Australia"
+    },
+    {
+        "regionID": 32,
+        "regionName": "Greece"
+    },
+    {
+        "regionID": 33,
+        "regionName": "Ireland"
+    },
+    {
+        "regionID": 34,
+        "regionName": "Norway"
+    },
+    {
+        "regionID": 35,
+        "regionName": "Portugal"
+    },
+    {
+        "regionID": 36,
+        "regionName": "Scandinavia"
+    },
+    {
+        "regionID": 37,
+        "regionName": "UK"
+    },
+    {
+        "regionID": 38,
+        "regionName": "USA, Brazil"
+    },
+    {
+        "regionID": 39,
+        "regionName": "Poland"
+    }
+]

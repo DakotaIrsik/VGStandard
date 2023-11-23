@@ -1,0 +1,432 @@
+[
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 1,
+        "systemName": "3DO Interactive Multiplayer",
+        "systemOEID": "openemu.system.3do",
+        "systemSerial": null,
+        "systemShortName": "3DO"
+    },
+    {
+        "systemHashless": 1,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 2,
+        "systemName": "Arcade",
+        "systemOEID": "openemu.system.arcade",
+        "systemSerial": null,
+        "systemShortName": "MAME"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 3,
+        "systemName": "Atari 2600",
+        "systemOEID": "openemu.system.2600",
+        "systemSerial": null,
+        "systemShortName": "2600"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 4,
+        "systemName": "Atari 5200",
+        "systemOEID": "openemu.system.5200",
+        "systemSerial": null,
+        "systemShortName": "5200"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": 128,
+        "systemID": 5,
+        "systemName": "Atari 7800",
+        "systemOEID": "openemu.system.7800",
+        "systemSerial": null,
+        "systemShortName": "7800"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": 64,
+        "systemID": 6,
+        "systemName": "Atari Lynx",
+        "systemOEID": "openemu.system.lynx",
+        "systemSerial": null,
+        "systemShortName": "Lynx"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 7,
+        "systemName": "Atari Jaguar",
+        "systemOEID": "openemu.system.jaguar",
+        "systemSerial": null,
+        "systemShortName": "Jaguar"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 8,
+        "systemName": "Atari Jaguar CD",
+        "systemOEID": "openemu.system.jaguarcd",
+        "systemSerial": null,
+        "systemShortName": "Jaguar CD"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 9,
+        "systemName": "Bandai WonderSwan",
+        "systemOEID": "openemu.system.ws",
+        "systemSerial": null,
+        "systemShortName": "WonderSwan"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 10,
+        "systemName": "Bandai WonderSwan Color",
+        "systemOEID": "openemu.system.ws",
+        "systemSerial": null,
+        "systemShortName": "WonderSwan Color"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 11,
+        "systemName": "Coleco ColecoVision",
+        "systemOEID": "openemu.system.colecovision",
+        "systemSerial": null,
+        "systemShortName": "ColecoVision"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 12,
+        "systemName": "GCE Vectrex",
+        "systemOEID": "openemu.system.vectrex",
+        "systemSerial": null,
+        "systemShortName": "Vectrex"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 13,
+        "systemName": "Intellivision",
+        "systemOEID": "openemu.system.intellivision",
+        "systemSerial": null,
+        "systemShortName": "Intellivision"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 14,
+        "systemName": "NEC PC Engine/TurboGrafx-16",
+        "systemOEID": "openemu.system.pce",
+        "systemSerial": null,
+        "systemShortName": "PCE"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 15,
+        "systemName": "NEC PC Engine CD/TurboGrafx-CD",
+        "systemOEID": "openemu.system.pcecd",
+        "systemSerial": null,
+        "systemShortName": "PCECD"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 16,
+        "systemName": "NEC PC-FX",
+        "systemOEID": "openemu.system.pcfx",
+        "systemSerial": null,
+        "systemShortName": "PCFX"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 17,
+        "systemName": "NEC SuperGrafx",
+        "systemOEID": "openemu.system.pce",
+        "systemSerial": null,
+        "systemShortName": "SuperGrafx"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 18,
+        "systemName": "Nintendo Famicom Disk System",
+        "systemOEID": "openemu.system.fds",
+        "systemSerial": null,
+        "systemShortName": "FDS"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 19,
+        "systemName": "Nintendo Game Boy",
+        "systemOEID": "openemu.system.gb",
+        "systemSerial": null,
+        "systemShortName": "GB"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 20,
+        "systemName": "Nintendo Game Boy Advance",
+        "systemOEID": "openemu.system.gba",
+        "systemSerial": null,
+        "systemShortName": "GBA"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 21,
+        "systemName": "Nintendo Game Boy Color",
+        "systemOEID": "openemu.system.gb",
+        "systemSerial": null,
+        "systemShortName": "GBC"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 22,
+        "systemName": "Nintendo GameCube",
+        "systemOEID": "openemu.system.gc",
+        "systemSerial": "1",
+        "systemShortName": "NGC"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 23,
+        "systemName": "Nintendo 64",
+        "systemOEID": "openemu.system.n64",
+        "systemSerial": null,
+        "systemShortName": "N64"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 24,
+        "systemName": "Nintendo DS",
+        "systemOEID": "openemu.system.nds",
+        "systemSerial": "1",
+        "systemShortName": "NDS"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": 16,
+        "systemID": 25,
+        "systemName": "Nintendo Entertainment System",
+        "systemOEID": "openemu.system.nes",
+        "systemSerial": null,
+        "systemShortName": "NES"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 26,
+        "systemName": "Nintendo Super Nintendo Entertainment System",
+        "systemOEID": "openemu.system.snes",
+        "systemSerial": null,
+        "systemShortName": "SNES"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 27,
+        "systemName": "Nintendo Virtual Boy",
+        "systemOEID": "openemu.system.vb",
+        "systemSerial": null,
+        "systemShortName": "VB"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 28,
+        "systemName": "Nintendo Wii",
+        "systemOEID": "openemu.system.wii",
+        "systemSerial": null,
+        "systemShortName": "Wii"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 29,
+        "systemName": "Sega 32X",
+        "systemOEID": "openemu.system.32x",
+        "systemSerial": null,
+        "systemShortName": "32X"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 30,
+        "systemName": "Sega Game Gear",
+        "systemOEID": "openemu.system.gg",
+        "systemSerial": null,
+        "systemShortName": "GG"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 31,
+        "systemName": "Sega Master System",
+        "systemOEID": "openemu.system.sms",
+        "systemSerial": null,
+        "systemShortName": "SMS"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": 1,
+        "systemHeaderSizeBytes": null,
+        "systemID": 32,
+        "systemName": "Sega CD/Mega-CD",
+        "systemOEID": "openemu.system.scd",
+        "systemSerial": null,
+        "systemShortName": "SCD"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 33,
+        "systemName": "Sega Genesis/Mega Drive",
+        "systemOEID": "openemu.system.sg",
+        "systemSerial": null,
+        "systemShortName": "MD"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": 1,
+        "systemHeaderSizeBytes": null,
+        "systemID": 34,
+        "systemName": "Sega Saturn",
+        "systemOEID": "openemu.system.saturn",
+        "systemSerial": null,
+        "systemShortName": "Saturn"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 35,
+        "systemName": "Sega SG-1000",
+        "systemOEID": "openemu.system.sg1000",
+        "systemSerial": null,
+        "systemShortName": "SG1000"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 36,
+        "systemName": "SNK Neo Geo Pocket",
+        "systemOEID": "openemu.system.ngp",
+        "systemSerial": null,
+        "systemShortName": "NGP"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 37,
+        "systemName": "SNK Neo Geo Pocket Color",
+        "systemOEID": "openemu.system.ngp",
+        "systemSerial": null,
+        "systemShortName": "NGPC"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 38,
+        "systemName": "Sony PlayStation",
+        "systemOEID": "openemu.system.psx",
+        "systemSerial": "1",
+        "systemShortName": "PSX"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 39,
+        "systemName": "Sony PlayStation Portable",
+        "systemOEID": "openemu.system.psp",
+        "systemSerial": "1",
+        "systemShortName": "PSP"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 40,
+        "systemName": "Magnavox Odyssey2",
+        "systemOEID": "openemu.system.odyssey2",
+        "systemSerial": null,
+        "systemShortName": "Odyssey2"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 41,
+        "systemName": "Commodore 64",
+        "systemOEID": "openemu.system.c64",
+        "systemSerial": null,
+        "systemShortName": "C64"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 42,
+        "systemName": "Microsoft MSX",
+        "systemOEID": "openemu.system.msx",
+        "systemSerial": null,
+        "systemShortName": "MSX"
+    },
+    {
+        "systemHashless": null,
+        "systemHeader": null,
+        "systemHeaderSizeBytes": null,
+        "systemID": 43,
+        "systemName": "Microsoft MSX2",
+        "systemOEID": "openemu.system.msx",
+        "systemSerial": null,
+        "systemShortName": "MSX2"
+    }
+]
