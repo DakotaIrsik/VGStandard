@@ -26,11 +26,12 @@ namespace VGStandard.Common.Web.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddAppSettingsIoC(this IServiceCollection services, IConfiguration configuration)
+    public static AppSettings AddAppSettingsIoC(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<AppSettings>(configuration);
         var settings = configuration.Get<AppSettings>();
-        return services.AddSingleton(settings);
+        services.AddSingleton(settings);
+        return settings;
     }
 
     public static IServiceCollection AddAutoMapper(this IServiceCollection services)
@@ -231,14 +232,14 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddCacheService(this IServiceCollection services, AppSettings.CacheSetting cacheSettings)
+    public static IServiceCollection AddCacheService(this IServiceCollection services, AppSettings settings)
     {
-        if (cacheSettings.CacheType == "Memory")
+        if (settings?.CacheSettings?.CacheType == "Memory")
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheService, MemoryCacheService>();
         }
-        else if (cacheSettings.CacheType == "Redis")
+        else if (settings?.CacheSettings?.CacheType == "Redis")
         {
             services.AddSingleton<ICacheService, RedisCacheService>();
         }

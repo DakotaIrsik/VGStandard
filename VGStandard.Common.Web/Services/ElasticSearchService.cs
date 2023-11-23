@@ -11,29 +11,47 @@ using VGStandard.Core.Utility;
 
 namespace VGStandard.Common.Web.Services;
 
-public interface IElasticSearchService : IDisposable
+public interface IElasticSearchService
 {
-    int Index<T>(T model, string index) where T : class;
-    Task<int> IndexAsync<T>(T model, string index) where T : class;
+    string Index<T>(T model, string index) where T : class;
+    Task<string> IndexAsync<T>(T model, string index) where T : class;
     Task<StandardResponse<T>> Search<T>(object searchRequest, string index) where T : class;
-    Task<int> IndexManyAsync<T>(IEnumerable<T> model, string index) where T : class;
+    Task<List<string>> IndexManyAsync<T>(IEnumerable<T> model, string index) where T : class;
+    List<string> IndexMany<T>(IEnumerable<T> model, string index) where T : class;
     Task<int> UpdateAsync<T>(T model, string index) where T : class;
     Task<HttpResponseMessage> DeleteIndexAsync(string index);
     Task<HttpResponseMessage> CreateIndexAsync(string indexName, string mappingJson);
 }
 
-public class ElasticSearchService : IElasticSearchService, IDisposable
+public class ElasticSearchService : IElasticSearchService
 {
 
     private readonly ElasticClient _client;
     private readonly IMapper _mapper;
     private readonly AppSettings _settings;
+    private readonly string _elasticSearchUrl;
+    private readonly string _apiKey;
 
-    public ElasticSearchService(IOptions<AppSettings> options, IMapper mapper)
+    public ElasticSearchService(IOptions<AppSettings> options, IMapper mapper, string elasticSearchUrl = null, string apiKey = null)
     {
         _mapper = mapper;
         _settings = options.Value;
+        _elasticSearchUrl = elasticSearchUrl ?? _settings.ConnectionStrings.ElasticSearch;
+        _apiKey = apiKey ?? _settings.ElasticSearchApiKey;
         _client = new ElasticClient(GetConfigSettings());
+    }
+
+    private ConnectionSettings GetConfigSettings()
+    {
+        var urls = _elasticSearchUrl.Split(',').Select(url => new Uri(url));
+        var pool = new StaticConnectionPool(urls);
+        var configSettings = new ConnectionSettings(pool)
+            .DefaultFieldNameInferrer(fieldName => fieldName)
+            .RequestTimeout(TimeSpan.FromMinutes(1))
+            .DisableDirectStreaming()
+            .BasicAuthentication("elastic", _apiKey);
+
+        return configSettings;
     }
 
     public async Task<HttpResponseMessage> CreateIndexAsync(string indexName, string mappingJson)
@@ -61,33 +79,36 @@ public class ElasticSearchService : IElasticSearchService, IDisposable
 
     public async Task<int> UpdateAsync<T>(T model, string index) where T : class
     {
-        var value = model.GetType().GetProperties().SingleOrDefault(p => p.Name == "Id").GetValue(model);
+        var value = model.GetType().GetProperties().SingleOrDefault(p => p.Name == "Identifier").GetValue(model);
         var response = await _client.UpdateAsync<T>(value.ToString(), u => u.Doc(model).Index(index));
         return response.IsValid ? 1 : 0;
     }
 
-    public int Index<T>(T model, string index) where T : class
+    public string Index<T>(T model, string index) where T : class
     {
-        var value = model.GetType().GetProperties().Single(p => p.Name == "Id").GetValue(model);
+        var value = model.GetType().GetProperties().Single(p => p.Name == "Identifier").GetValue(model);
         var result = _client.Index(model, m => m.Id(new Id(value.ToString())).Index(index));
-        return (!string.IsNullOrEmpty(result.Id)) ? 1 : 0;
+        return result.Id;
     }
 
-    public async Task<int> IndexAsync<T>(T model, string index) where T : class
+    public async Task<string> IndexAsync<T>(T model, string index) where T : class
     {
-        var value = model.GetType().GetProperties().Single(p => p.Name == "Id").GetValue(model);
+        var value = model.GetType().GetProperties().Single(p => p.Name == "Identifier").GetValue(model);
         var result = await _client.IndexAsync(model, m => m.Id(new Id(value.ToString())).Index(index));
-        return (!string.IsNullOrEmpty(result.Id)) ? 1 : 0;
+        return result.Id;
     }
 
-    public async Task<int> IndexManyAsync<T>(IEnumerable<T> model, string index) where T : class
+    public async Task<List<string>> IndexManyAsync<T>(IEnumerable<T> model, string index) where T : class
     {
-        var docsWritten = 0;
-        foreach (var doc in model)
-        {
-            docsWritten = docsWritten + await IndexAsync(doc, index);
-        }
-        return docsWritten;
+        var value = model.GetType().GetProperties().Single(p => p.Name == "Identifier").GetValue(model);
+        var result = await _client.IndexManyAsync(model, index);
+        return result.Items.Select(i => i.Id).ToList();
+    }
+
+    public List<string> IndexMany<T>(IEnumerable<T> model, string index) where T : class
+    {
+        var result = _client.IndexMany(model, index);
+        return result.Items.Select(i => i.Id).ToList();
     }
 
     public async Task<StandardResponse<T>> Search<T>(object searchRequest, string index) where T : class
@@ -206,20 +227,4 @@ public class ElasticSearchService : IElasticSearchService, IDisposable
         return isNumber && i > 0;
     }
 
-    private ConnectionSettings GetConfigSettings()
-    {
-        var urls = _settings.ConnectionStrings.ElasticSearch.Split(',').Select(url => new Uri(url));
-        var pool = new StaticConnectionPool(urls);
-        var configSettings = new ConnectionSettings(pool)
-            .DefaultFieldNameInferrer(fieldName => fieldName)
-            .RequestTimeout(new TimeSpan(0, 0, 60))
-            .DisableDirectStreaming()
-            .BasicAuthentication("elastic", _settings.ElasticSearchApiKey);
-
-        return configSettings;
-    }
-
-    public void Dispose()
-    {
-    }
 }

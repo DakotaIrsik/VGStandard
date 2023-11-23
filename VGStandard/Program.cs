@@ -17,7 +17,7 @@ builder.Services.AddCors(opt => opt.AddPolicy("CorsPolicy", c =>
      .AllowAnyMethod();
 }));
 builder.Services.AddVault(settings);
-builder.Services.AddCacheService(settings.CacheSettings);
+builder.Services.AddCacheService(settings);
 builder.Services.AddSwagger(builder.Environment, "VGStandard");
 builder.Services.AddAppSettingsIoC(builder.Configuration);
 builder.Services.AddScoped(sp => new PoorManClientCredentialFilter(settings.PoorManClientCredential, builder.Environment));

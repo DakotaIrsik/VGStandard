@@ -1,159 +1,220 @@
-﻿using DataImporter.Models;
-using Nest;
+﻿using AutoMapper;
+using CommandLine;
+using EFCore.BulkExtensions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Npgsql;
-using System.Data;
+using System.Reflection;
+using VGStandard.Common.Web.Extensions;
+using VGStandard.Common.Web.Services;
+using VGStandard.Core.Metadata;
+using VGStandard.Core.Settings;
+using VGStandard.Data.Contexts;
+using VGStandard.DataImporter.Models;
 
-namespace DataImporter
+namespace VGStandard.Data.Importer
 {
     class Program
     {
         static async Task Main(string[] args)
         {
-            // Set default values
-            string elasticsearchConnectionString = "http://localhost:9200";
-            string postgresConnectionString = "Host=localhost;Username=postgres;Password=postgres;Database=videogames;Pooling=false;Port=5432;Timeout=30;";
+            Parser.Default.ParseArguments<CommandLineOptions>(args)
+                .WithParsed(async options =>
+                {
+                    var host = CreateHostBuilder(args, options).Build();
+                    var app = host.Services.GetRequiredService<Importer>();
+                    await app.Run(options);
+                });
+        }
 
-            // Override defaults if command-line arguments are provided
-            foreach (var arg in args)
+        static IHostBuilder CreateHostBuilder(string[] args, CommandLineOptions options) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddCommandLine(args);
+                })
+                .ConfigureServices((hostContext, services) =>
+                {
+                    var configuration = hostContext.Configuration;
+                    var settings = services.AddAppSettingsIoC(configuration);
+
+                    string elasticSearchUrl = options.ElasticsearchUrl ?? settings.ConnectionStrings.ElasticSearch;
+                    string apiKey = options.ElasticsearchApiKey ?? settings.ElasticSearchApiKey;
+                    string postgresConnectionString = options.PostgresConnectionString ?? settings.ConnectionStrings.Postgres;
+
+                    services.AddDbContext<VideoGameContext>(opts =>
+                        opts.UseNpgsql(postgresConnectionString));
+
+                    services.AddTransient<IElasticSearchService>(provider =>
+                        new ElasticSearchService(provider.GetRequiredService<IOptions<AppSettings>>(),
+                                                 provider.GetRequiredService<IMapper>(),
+                                                 elasticSearchUrl, apiKey));
+                    services.AddAutoMapper(Assembly.GetExecutingAssembly());
+                    services.AddCacheService(settings);
+                    services.AddSingleton<Importer>();
+                });
+    }
+
+
+    public class Importer
+    {
+        private readonly IElasticSearchService _elasticSearchService;
+        private readonly VideoGameContext _context;
+        private readonly ILogger<Importer> _logger;
+        private readonly AppSettings _settings;
+
+        public Importer(IElasticSearchService elasticSearchService,
+                     VideoGameContext context,
+                     ILogger<Importer> logger,
+                     IOptions<AppSettings> options)
+        {
+            _elasticSearchService = elasticSearchService;
+            _context = context;
+            _logger = logger;
+            _settings = options.Value;
+        }
+
+        public async Task Run(CommandLineOptions options)
+        {
+            if (options.RecreatePostgresTables || _settings.RecreatePostgresTables)
             {
-                if (arg.StartsWith("--fill-elasticsearch="))
-                {
-                    elasticsearchConnectionString = arg.Substring("--fill-elasticsearch=".Length);
-                }
-                else if (arg.StartsWith("--fill-postgres="))
-                {
-                    postgresConnectionString = arg.Substring("--fill-postgres=".Length);
-                }
+                _context.Database.EnsureDeleted();
+                _context.Database.EnsureCreated();
             }
 
-            // Proceed with using the connection strings
-            if (!string.IsNullOrEmpty(elasticsearchConnectionString))
+            bool useBulkPostgres = options.BulkPostgres || _settings.BulkPostgres;
+            bool useBulkElasticsearch = options.BulkElasticsearch || _settings.BulkElasticSearch;
+            bool skipPostgres = options.SkipPostgres || _settings.SkipPostgres;
+            bool skipElasticSearch = options.SkipElasticsearch || _settings.SkipElasticsearch;
+
+            if (!skipPostgres)
             {
-                await PopulateElastic(elasticsearchConnectionString);
-            }
-
-            if (!string.IsNullOrEmpty(postgresConnectionString))
-            {
-                await PopulatePostgres(postgresConnectionString);
-            }
-        }
-
-        static async Task PopulatePostgres(string connectionString)
-        {
-            await InsertDataFromJson<Region>("Regions", "regions.json", connectionString);
-            await InsertDataFromJson<Release>("Releases", "releases.json", connectionString);
-            await InsertDataFromJson<Rom>("Roms", "roms.json", connectionString);
-            await InsertDataFromJson<GameSystem>("Systems", "systems.json", connectionString);
-        }
-
-        private static async Task InsertDataFromJson<T>(string tableName, string filePath, string connectionString) where T : class
-        {
-            var jsonArray = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
-            const int batchSize = 1000; // Adjust based on your data size and database capacity
-
-            using (var conn = new NpgsqlConnection(connectionString))
-            {
-                await conn.OpenAsync();
-
-                var createTableQuery = GetCreateTableQuery<T>(tableName);
-                using (var cmd = new NpgsqlCommand(createTableQuery, conn))
+                if (useBulkPostgres)
                 {
-                    await cmd.ExecuteNonQueryAsync();
+                    BulkPopulatePostgres();
                 }
-
-                var columns = typeof(T).GetProperties().Select(p => p.Name).ToArray();
-                var columnNames = string.Join(", ", columns);
-
-                for (int i = 0; i < jsonArray.Count; i += batchSize)
+                else
                 {
-                    var batch = jsonArray.Skip(i).Take(batchSize).ToList();
-
-                    using (var writer = conn.BeginBinaryImport($"COPY public.{tableName} ({columnNames}) FROM STDIN (FORMAT BINARY)"))
-                    {
-                        foreach (var item in batch)
-                        {
-                            writer.StartRow();
-                            foreach (var prop in typeof(T).GetProperties())
-                            {
-                                writer.Write(prop.GetValue(item));
-                            }
-                        }
-
-                        await writer.CompleteAsync();
-                    }
-
-                    Console.WriteLine($"Inserted {i + batch.Count} records into {tableName}.");
-                }
-            }
-
-            Console.WriteLine($"Finished inserting data for {tableName}.");
-        }
-
-
-        static string GetCreateTableQuery<T>(string tableName)
-        {
-            var typeToSqlMapping = new Dictionary<Type, string>
-            {
-                { typeof(string), "TEXT" },
-                { typeof(int), "INTEGER" },
-                { typeof(long), "BIGINT" },
-                { typeof(bool), "BOOLEAN" },
-                { typeof(DateTime), "TIMESTAMP" },
-                // ... add more mappings as needed
-            };
-
-            var columns = typeof(T).GetProperties().Select(p =>
-            {
-                var columnName = p.Name;
-                var columnType = typeToSqlMapping.ContainsKey(p.PropertyType) ? typeToSqlMapping[p.PropertyType] : "TEXT"; // default to TEXT
-                return $"{columnName} {columnType}";
-            });
-
-            // Drop the table if it exists, then create a new one
-            return $@"
-                    DROP TABLE IF EXISTS {tableName};
-                    CREATE TABLE {tableName} ({string.Join(", ", columns)});
-                    ";
-        }
-
-        static async Task PopulateElastic(string connectionString)
-        {
-            var settings = new ConnectionSettings(new Uri(connectionString))
-              .DefaultIndex("default_index")
-              .EnableDebugMode();
-
-            var client = new ElasticClient(settings);
-            IndexJsonFile<Region>(client, "Regions", "regions.json");
-            IndexJsonFile<Release>(client, "Releases", "releases.json");
-            IndexJsonFile<Rom>(client, "Roms", "roms.json");
-            IndexJsonFile<GameSystem>(client, "Systems", "systems.json");
-        }
-
-        static void IndexJsonFile<T>(IElasticClient client, string indexName, string filePath) where T : class
-        {
-            var jsonArray = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
-
-            const int batchSize = 1000;  // Or whatever batch size you want.
-            for (int i = 0; i < jsonArray.Count; i += batchSize)
-            {
-                var batch = jsonArray.Skip(i).Take(batchSize).ToList();
-
-                var bulkIndexResponse = client.Bulk(b => b
-                    .Index(indexName.ToLower())
-                    .CreateMany(batch)
-                );
-
-                if (bulkIndexResponse.Errors)
-                {
-                    foreach (var itemWithError in bulkIndexResponse.ItemsWithErrors)
-                    {
-                        Console.WriteLine($"Failed to index document {itemWithError.Id}: {itemWithError.Error}");
-                    }
+                    await PopulatePostgres();
                 }
             }
 
-            Console.WriteLine($"Finished indexing {indexName}.");
+            if (!skipElasticSearch)
+            {
+                if (useBulkElasticsearch)
+                {
+                    await BulkPopulateElastic();
+                }
+                else
+                {
+                    PopulateElastic();
+                }
+            }
         }
+
+        private void BulkPopulatePostgres()
+        {
+             BulkPopulateTable<Region>("regions.json");
+             BulkPopulateTable<GameSystem>("systems.json");
+             BulkPopulateTable<Rom>("roms.json");
+             BulkPopulateTable<Release>("releases.json");
+        }
+
+        private async Task PopulatePostgres()
+        {
+            await PopulateTable<Region>("regions.json");
+            await PopulateTable<GameSystem>("systems.json");
+            await PopulateTable<Rom>("roms.json");
+            await PopulateTable<Release>("releases.json");
+        }
+
+        private async Task BulkPopulateElastic()
+        {
+            BulkPopulateElastic<Region>("regions.json", "regions");
+            BulkPopulateElastic<GameSystem>("systems.json", "systems");
+            BulkPopulateElastic<Rom>("roms.json", "roms");
+            BulkPopulateElastic<Release>("releases.json", "releases");
+        }
+
+        private async Task PopulateElastic()
+        {
+            PopulateIndex<Region>("regions.json", "regions");
+            PopulateIndex<GameSystem>("systems.json", "systems");
+            PopulateIndex<Rom>("roms.json", "roms");
+            PopulateIndex<Release>("releases.json", "releases");
+        }
+
+        private async Task PopulateTable<T>(string filePath) where T : Trackable, new()
+        {
+            try
+            {
+                var entities = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
+                foreach (var entity in entities)
+                {
+                    _context.Add(entity);
+                    _context.SaveChanges();
+                    _logger.LogInformation($"Successfully populated {entities.Count()} records into Postgres for table {typeof(T).Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while populating table for {typeof(T).Name}.");
+            }
+        }
+
+        private void PopulateIndex<T>(string filePath, string indexName) where T : Trackable, new()
+        {
+            try
+            {
+                var entities = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
+                foreach (var entity in entities)
+                {
+                    var result = _elasticSearchService.Index(entity, indexName);
+                    _logger.LogInformation($"Successfully indexed {entities.Count()} records into ElasticSearch for index {typeof(T).Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while indexing documents in {indexName}.");
+            }
+        }
+
+
+        private void BulkPopulateTable<T>(string filePath) where T : class, new()
+        {
+            try
+            {
+                var entities = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
+                if (entities?.Count > 0)
+                {
+                    _context.BulkInsert(entities);
+                    _logger.LogInformation($"Successfully bulk populated {entities.Count()} records into Postgres for table {typeof(T).Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred during bulk population for {typeof(T).Name}.");
+            }
+        }
+
+
+        private void BulkPopulateElastic<T>(string filePath, string indexName) where T : class
+        {
+            try
+            {
+                var entities = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filePath));
+                var documents = _elasticSearchService.IndexMany(entities, indexName);
+                _logger.LogInformation($"Successfully bulk indexed {entities.Count()} records into ElasticSearch for index {typeof(T).Name}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error occurred while indexing documents in {indexName}.");
+            }
+        }
+
     }
 }

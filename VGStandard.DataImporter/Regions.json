@@ -1,158 +1,158 @@
 [
-    {
-        "regionID": 1,
-        "regionName": "Asia"
-    },
-    {
-        "regionID": 2,
-        "regionName": "Australia"
-    },
-    {
-        "regionID": 3,
-        "regionName": "Brazil"
-    },
-    {
-        "regionID": 4,
-        "regionName": "Canada"
-    },
-    {
-        "regionID": 5,
-        "regionName": "China"
-    },
-    {
-        "regionID": 6,
-        "regionName": "Denmark"
-    },
-    {
-        "regionID": 7,
-        "regionName": "Europe"
-    },
-    {
-        "regionID": 8,
-        "regionName": "Finland"
-    },
-    {
-        "regionID": 9,
-        "regionName": "France"
-    },
-    {
-        "regionID": 10,
-        "regionName": "Germany"
-    },
-    {
-        "regionID": 11,
-        "regionName": "Hong Kong"
-    },
-    {
-        "regionID": 12,
-        "regionName": "Italy"
-    },
-    {
-        "regionID": 13,
-        "regionName": "Japan"
-    },
-    {
-        "regionID": 14,
-        "regionName": "Korea"
-    },
-    {
-        "regionID": 15,
-        "regionName": "Netherlands"
-    },
-    {
-        "regionID": 16,
-        "regionName": "Russia"
-    },
-    {
-        "regionID": 17,
-        "regionName": "Spain"
-    },
-    {
-        "regionID": 18,
-        "regionName": "Sweden"
-    },
-    {
-        "regionID": 19,
-        "regionName": "Taiwan"
-    },
-    {
-        "regionID": 20,
-        "regionName": "Unknown"
-    },
-    {
-        "regionID": 21,
-        "regionName": "USA"
-    },
-    {
-        "regionID": 22,
-        "regionName": "World"
-    },
-    {
-        "regionID": 23,
-        "regionName": "Asia, Australia"
-    },
-    {
-        "regionID": 24,
-        "regionName": "Brazil, Korea"
-    },
-    {
-        "regionID": 25,
-        "regionName": "Japan, Europe"
-    },
-    {
-        "regionID": 26,
-        "regionName": "Japan, Korea"
-    },
-    {
-        "regionID": 27,
-        "regionName": "Japan, USA"
-    },
-    {
-        "regionID": 28,
-        "regionName": "USA, Australia"
-    },
-    {
-        "regionID": 29,
-        "regionName": "USA, Europe"
-    },
-    {
-        "regionID": 30,
-        "regionName": "USA, Korea"
-    },
-    {
-        "regionID": 31,
-        "regionName": "Europe, Australia"
-    },
-    {
-        "regionID": 32,
-        "regionName": "Greece"
-    },
-    {
-        "regionID": 33,
-        "regionName": "Ireland"
-    },
-    {
-        "regionID": 34,
-        "regionName": "Norway"
-    },
-    {
-        "regionID": 35,
-        "regionName": "Portugal"
-    },
-    {
-        "regionID": 36,
-        "regionName": "Scandinavia"
-    },
-    {
-        "regionID": 37,
-        "regionName": "UK"
-    },
-    {
-        "regionID": 38,
-        "regionName": "USA, Brazil"
-    },
-    {
-        "regionID": 39,
-        "regionName": "Poland"
-    }
+  {
+    "Identifier": "ca2541f9-5cc1-4125-ac8d-3757048200f7",
+    "RegionName": "Asia"
+  },
+  {
+    "Identifier": "09a0e0a0-4e5b-45bd-943f-fd99ee8bd215",
+    "RegionName": "Australia"
+  },
+  {
+    "Identifier": "2347d3f9-1eba-4154-bcfc-5d6bdf0772cc",
+    "RegionName": "Brazil"
+  },
+  {
+    "Identifier": "7508d673-a1a2-4002-aa1b-3931c0f42beb",
+    "RegionName": "Canada"
+  },
+  {
+    "Identifier": "62fbc192-ba3c-4d48-b3db-5fc1d7f8b9ef",
+    "RegionName": "China"
+  },
+  {
+    "Identifier": "f97839c3-c5fc-4685-933b-3904415bd3c1",
+    "RegionName": "Denmark"
+  },
+  {
+    "Identifier": "af9c8588-aa65-4f16-8392-e5de190dfa91",
+    "RegionName": "Europe"
+  },
+  {
+    "Identifier": "fe39cd9f-e11a-4e42-9aeb-2219c99c04a6",
+    "RegionName": "Finland"
+  },
+  {
+    "Identifier": "25ad814a-5b60-48f5-b91b-cb5fb291dbb0",
+    "RegionName": "France"
+  },
+  {
+    "Identifier": "51274ca1-7f1a-494d-bc82-cf658c726d9d",
+    "RegionName": "Germany"
+  },
+  {
+    "Identifier": "cf1353b7-1495-4e48-981c-cc378eb32ef9",
+    "RegionName": "Hong Kong"
+  },
+  {
+    "Identifier": "ac32f3f1-1435-4cb5-afb4-67fdaf396286",
+    "RegionName": "Italy"
+  },
+  {
+    "Identifier": "123d087f-5395-4c0b-9027-9fc15c287f03",
+    "RegionName": "Japan"
+  },
+  {
+    "Identifier": "e2345a59-5c85-4336-a72a-b01f5fdb172a",
+    "RegionName": "Korea"
+  },
+  {
+    "Identifier": "56016685-ffd1-4bb2-8564-222ad772d6da",
+    "RegionName": "Netherlands"
+  },
+  {
+    "Identifier": "51889b6d-0a61-463a-b447-a4471a3412c4",
+    "RegionName": "Russia"
+  },
+  {
+    "Identifier": "cb82ef76-31ec-4e6b-8dce-0a5bdceac15d",
+    "RegionName": "Spain"
+  },
+  {
+    "Identifier": "4d84b864-6add-4303-a698-601cf845d59c",
+    "RegionName": "Sweden"
+  },
+  {
+    "Identifier": "4eba372d-0e7d-40f1-a18a-7bee7f5c456a",
+    "RegionName": "Taiwan"
+  },
+  {
+    "Identifier": "294b4a47-0ed8-4ace-93c2-846a2d582a3f",
+    "RegionName": "Unknown"
+  },
+  {
+    "Identifier": "db008b8c-e1b7-42fb-a36d-b6f2c731d124",
+    "RegionName": "USA"
+  },
+  {
+    "Identifier": "ce264c85-8361-433e-bc04-c06d97f87730",
+    "RegionName": "World"
+  },
+  {
+    "Identifier": "baa01860-d5cd-426b-80b3-ae5c807d6cb2",
+    "RegionName": "Asia, Australia"
+  },
+  {
+    "Identifier": "0f33c9e9-a03c-42cb-8f24-a2632e0af0c0",
+    "RegionName": "Brazil, Korea"
+  },
+  {
+    "Identifier": "eba41faa-7591-4a3a-bef1-6dbec6d743b3",
+    "RegionName": "Japan, Europe"
+  },
+  {
+    "Identifier": "549471e4-9288-4cb5-afe5-abd63c874f73",
+    "RegionName": "Japan, Korea"
+  },
+  {
+    "Identifier": "16aa8f18-81d7-4fe5-b903-73b9af4c6e5b",
+    "RegionName": "Japan, USA"
+  },
+  {
+    "Identifier": "489769da-c72d-4f1d-bbcf-510fbf8eb881",
+    "RegionName": "USA, Australia"
+  },
+  {
+    "Identifier": "04813b8a-2355-49c4-89fa-fb29ef397c7a",
+    "RegionName": "USA, Europe"
+  },
+  {
+    "Identifier": "7847589e-1329-45da-bc64-b950713e7746",
+    "RegionName": "USA, Korea"
+  },
+  {
+    "Identifier": "3021b21c-9759-4037-b2a7-c021ce18428b",
+    "RegionName": "Europe, Australia"
+  },
+  {
+    "Identifier": "c5b1e8b5-5ed4-4457-9f2d-ba14aa430293",
+    "RegionName": "Greece"
+  },
+  {
+    "Identifier": "76ee02cc-b2fa-400e-a16b-60e3ebc7ba3a",
+    "RegionName": "Ireland"
+  },
+  {
+    "Identifier": "84cf5cbb-eb64-4095-b5b2-ac8a3bf10513",
+    "RegionName": "Norway"
+  },
+  {
+    "Identifier": "b9aad00a-5457-49fc-a0bb-2649963d4b93",
+    "RegionName": "Portugal"
+  },
+  {
+    "Identifier": "c4461f4b-9a96-4eb1-8175-2f21944abe75",
+    "RegionName": "Scandinavia"
+  },
+  {
+    "Identifier": "4055db5f-fab9-41c5-82f6-f83376e634dc",
+    "RegionName": "UK"
+  },
+  {
+    "Identifier": "39916715-4ca5-4758-ae93-dada9aa41a3a",
+    "RegionName": "USA, Brazil"
+  },
+  {
+    "Identifier": "2cd505f7-2dfd-4b36-a466-6e9c9085b4d6",
+    "RegionName": "Poland"
+  }
 ]

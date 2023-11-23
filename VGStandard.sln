@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.WebAPI", "VGStandard\VGStandard.WebAPI.csproj", "{1F96CDD9-C885-489C-A52B-3A20F8D1F657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.WebAPI", "VGStandard\VGStandard.WebAPI.csproj", "{1F96CDD9-C885-489C-A52B-3A20F8D1F657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.Core", "VGStandard.Core\VGStandard.Core.csproj", "{BE58568D-D8A0-4850-B0D5-4590EEB304C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Core", "VGStandard.Core\VGStandard.Core.csproj", "{BE58568D-D8A0-4850-B0D5-4590EEB304C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.Common.Web", "VGStandard.Common.Web\VGStandard.Common.Web.csproj", "{37848ED8-21E6-46C5-A407-FEF4A873A85A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Common.Web", "VGStandard.Common.Web\VGStandard.Common.Web.csproj", "{37848ED8-21E6-46C5-A407-FEF4A873A85A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.DataImporter", "VGStandard.DataImporter\VGStandard.DataImporter.csproj", "{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Data.Importer", "VGStandard.DataImporter\VGStandard.Data.Importer.csproj", "{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Data", "VGStandard.Data\VGStandard.Data.csproj", "{5F340256-A8FA-4043-B405-652ED23F42A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.Common", "VGStandard.Common\VGStandard.Common.csproj", "{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F340256-A8FA-4043-B405-652ED23F42A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F340256-A8FA-4043-B405-652ED23F42A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F340256-A8FA-4043-B405-652ED23F42A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F340256-A8FA-4043-B405-652ED23F42A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
