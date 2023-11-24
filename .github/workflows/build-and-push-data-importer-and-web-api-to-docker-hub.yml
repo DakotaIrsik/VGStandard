@@ -31,7 +31,7 @@ jobs:
       run: zip -r vgstandard-data-importer-bin.zip ./VGStandard.Data.Importer
 
     - name: Set Release Tag Name
-      run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y'))" >> $GITHUB_ENV
+      run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y-%H-%M-%S'))" >> $GITHUB_ENV
 
     - name: Create Release
       id: create_release
