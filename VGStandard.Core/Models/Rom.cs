@@ -15,8 +15,14 @@ public class Rom : Trackable
     [JsonProperty("systemID")]
     public int SystemId { get; set; }
 
+    [JsonProperty("system")]
+    public virtual GameSystem? System { get; set; } = null;
+
     [JsonProperty("regionID")]
     public int RegionId { get; set; }
+
+    [JsonProperty("region")]
+    public virtual Region? Region { get; set; } = null;
 
     [JsonProperty("romHashCRC")]
     public string? RomHashCRC { get; set; } = string.Empty;

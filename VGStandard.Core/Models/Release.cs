@@ -12,8 +12,11 @@ public class Release : Trackable
     [JsonProperty("identifier")]
     public Guid Identifier { get; set; } = Guid.NewGuid();
 
-    [JsonProperty("romID")]
+    [JsonProperty("romid")]
     public int RomId { get; set; }
+
+    [JsonProperty("rom")]
+    public virtual Rom? Rom { get; set; } = null;
 
     [JsonProperty("releaseTitleName")]
     public string ReleaseTitleName { get; set; } = string.Empty;
