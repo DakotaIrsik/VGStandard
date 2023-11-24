@@ -17,7 +17,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-
+RUN ls -al /app
 
 COPY ["VGStandard.Data.Importer/Roms.json", "./app/roms.json"]
 COPY ["VGStandard.Data.Importer/Releases.json", "./app/releases.json"]
