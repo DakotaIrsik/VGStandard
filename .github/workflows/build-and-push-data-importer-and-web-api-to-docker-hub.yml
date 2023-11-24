@@ -19,16 +19,23 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push VGStandard.Data.Importer
+        - name: Build and push VGStandard.Data.Importer
       uses: docker/build-push-action@v2
       with:
         context: .
         file: ./VGStandard.Data.Importer/Dockerfile
         push: true
         tags: dakotairsik/vgstandard-data-importer:latest
+        load: true # Ensures the image is available locally for the next step
+
+    - name: Create temporary container
+      run: |
+        docker create --name temp-container dakotairsik/vgstandard-data-importer:latest
+        docker cp temp-container:/app ./app-files
+        docker rm temp-container
 
     - name: Zip VGStandard.Data.Importer
-      run: zip -r vgstandard-data-importer-bin.zip ./VGStandard.Data.Importer
+      run: zip -r vgstandard-data-importer-bin.zip ./app-files
 
     - name: Set Release Tag Name
       run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y-%H-%M-%S'))" >> $GITHUB_ENV
