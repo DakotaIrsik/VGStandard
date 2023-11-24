@@ -81,13 +81,14 @@ jobs:
     - name: Set Release Tag Name
       run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y'))" >> $GITHUB_ENV
 
-    - name: Upload VGStandard.WebAPI Binary as Release Asset
-      uses: actions/upload-release-asset@v1
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./vgstandard-web-api-bin.zip
-        asset_name: vgstandard-web-api-bin.zip
-        asset_content_type: application/zip
+        tag_name: ${{ env.RELEASE_TAG }}
+        release_name: Release ${{ env.RELEASE_TAG }}
+        draft: false
+        prerelease: false
 
