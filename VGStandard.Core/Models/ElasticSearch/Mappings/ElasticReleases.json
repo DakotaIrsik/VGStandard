@@ -1,0 +1,206 @@
+﻿{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "lowercase_keyword": {
+          "tokenizer": "keyword",
+          "filter": [
+            "lowercase"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "CreatedBy": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "CreatedOn": {
+        "type": "date"
+      },
+      "Id": {
+        "type": "long"
+      },
+      "Identifier": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RegionLocalizedId": {
+        "type": "long"
+      },
+      "ReleaseCoverBack": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseCoverCart": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseCoverDisc": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "ReleaseCoverFront": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "ReleaseDate": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "ReleaseDescription": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseDeveloper": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseGenre": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleasePublisher": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseReferenceImageURL": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "ReleaseReferenceURL": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "ReleaseTitleName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomId": {
+        "type": "long"
+      },
+      "TempRegionLocalizedName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "TempSystemName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "TempSystemShortName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "UpdatedBy": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "UpdatedOn": {
+        "type": "date"
+      }
+    }
+  }
+}

@@ -1,13 +1,13 @@
-﻿using System.Net.Http.Headers;
-using System.Reflection;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Options;
 using Nest;
+using Newtonsoft.Json;
+using System.Reflection;
 using VGStandard.Core.Metadata;
 using VGStandard.Core.Settings;
 using VGStandard.Core.Utility;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace VGStandard.Common.Web.Services;
 
@@ -19,8 +19,10 @@ public interface IElasticSearchService
     Task<List<string>> IndexManyAsync<T>(IEnumerable<T> model, string index) where T : class;
     List<string> IndexMany<T>(IEnumerable<T> model, string index) where T : class;
     Task<int> UpdateAsync<T>(T model, string index) where T : class;
-    Task<HttpResponseMessage> DeleteIndexAsync(string index);
-    Task<HttpResponseMessage> CreateIndexAsync(string indexName, string mappingJson);
+    Task<DeleteIndexResponse> DeleteIndexAsync(string index);
+    DeleteIndexResponse DeleteIndex(string index);
+    Task<CreateIndexResponse> CreateIndexAsync(string indexName);
+    CreateIndexResponse CreateIndex(string indexName, string jsonSettings);
 }
 
 public class ElasticSearchService : IElasticSearchService
@@ -54,32 +56,41 @@ public class ElasticSearchService : IElasticSearchService
         return configSettings;
     }
 
-    public async Task<HttpResponseMessage> CreateIndexAsync(string indexName, string mappingJson)
+    public async Task<CreateIndexResponse> CreateIndexAsync(string indexName)
     {
-        var content = new StringContent(mappingJson, Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json; charset=utf-8").MediaType);
-        using (var client = new HttpClient())
-        {
-            client.BaseAddress = new Uri(_settings.ConnectionStrings.ElasticSearch);
-            string svcCredentials = Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes("elastic" + ":" + _settings.ElasticSearchApiKey));
-            client.DefaultRequestHeaders.Add("Authorization", $"Basic {svcCredentials}");
-            return await client.PutAsync(indexName, content);
-        }
+        return await _client.Indices.CreateAsync(indexName, s => s
+            .Settings(se => se
+                .NumberOfReplicas(1)
+                .NumberOfShards(1)
+                .Analysis(an => an
+                    .Analyzers(anz => anz
+                        .Custom("lowercase_keyword", ca => ca
+                            .Tokenizer("keyword")
+                            .Filters("lowercase")
+                        )
+                    )
+                )));
     }
 
-    public async Task<HttpResponseMessage> DeleteIndexAsync(string indexName)
+    public CreateIndexResponse CreateIndex(string indexName, string jsonConfig)
     {
-        using (var client = new HttpClient())
-        {
-            client.BaseAddress = new Uri(_settings.ConnectionStrings.ElasticSearch);
-            string svcCredentials = Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes("elastic" + ":" + _settings.ElasticSearchApiKey));
-            client.DefaultRequestHeaders.Add("Authorization", $"Basic {svcCredentials}");
-            return await client.DeleteAsync(indexName);
-        }
+         return _client.LowLevel.Indices.Create<CreateIndexResponse>(indexName, jsonConfig);
+    }
+
+
+    public async Task<DeleteIndexResponse> DeleteIndexAsync(string indexName)
+    {
+        return await _client.Indices.DeleteAsync(indexName);
+    }
+
+    public DeleteIndexResponse DeleteIndex(string indexName)
+    {
+        return _client.Indices.Delete(indexName);
     }
 
     public async Task<int> UpdateAsync<T>(T model, string index) where T : class
     {
-        var value = model.GetType().GetProperties().SingleOrDefault(p => p.Name == "Identifier").GetValue(model);
+        var value = model.GetType().GetProperties().Single(p => p.Name == "Identifier").GetValue(model);
         var response = await _client.UpdateAsync<T>(value.ToString(), u => u.Doc(model).Index(index));
         return response.IsValid ? 1 : 0;
     }
@@ -227,4 +238,28 @@ public class ElasticSearchService : IElasticSearchService
         return isNumber && i > 0;
     }
 
+}
+
+
+
+public class IndexConfiguration
+{
+    public Analysis Analysis { get; set; }
+    public Mappings Mappings { get; set; }
+}
+
+public class Analysis
+{
+    public Dictionary<string, Analyzer> Analyzer { get; set; }
+}
+
+public class Analyzer
+{
+    public string Tokenizer { get; set; }
+    public List<string> Filter { get; set; }
+}
+
+public class Mappings
+{
+    // Define your mappings properties here
 }

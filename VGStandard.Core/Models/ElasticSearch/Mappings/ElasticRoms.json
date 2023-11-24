@@ -1,0 +1,169 @@
+﻿{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "lowercase_keyword": {
+          "tokenizer": "keyword",
+          "filter": [
+            "lowercase"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "CreatedBy": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "CreatedOn": {
+        "type": "date"
+      },
+      "Id": {
+        "type": "long"
+      },
+      "Identifier": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RegionId": {
+        "type": "long"
+      },
+      "RomDumpSource": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RomExtensionlessFileName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomFileName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomHashCRC": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RomHashMD5": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RomHashSHA1": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomHeader": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomLanguage": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomParent": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RomSerial": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "RomSize": {
+        "type": "long"
+      },
+      "SystemId": {
+        "type": "long"
+      },
+      "TempRomRegion": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
+      "UpdatedBy": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "UpdatedOn": {
+        "type": "date"
+      }
+    }
+  }
+}

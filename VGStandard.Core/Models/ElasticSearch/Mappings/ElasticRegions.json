@@ -13,27 +13,6 @@
   },
   "mappings": {
     "properties": {
-      "Name": {
-        "type": "text",
-        "analyzer": "lowercase_keyword",
-        "fielddata": true
-      },
-      "Guid": {
-        "type": "text",
-        "analyzer": "lowercase_keyword",
-        "fielddata": true
-      },
-      "Notes": {
-        "type": "text",
-        "analyzer": "lowercase_keyword",
-        "fielddata": true
-      },
-      "Endpoint": {
-        "type": "text",
-        "analyzer": "lowercase_keyword",
-        "fielddata": true
-      },
-      "CreatedOn": { "type": "date" },
       "CreatedBy": {
         "type": "text",
         "fields": {
@@ -43,9 +22,31 @@
           }
         }
       },
-      "Id": { "type": "long" },
-      "IsActive": { "type": "keyword" },
-      "UpdatedOn": { "type": "date" },
+      "CreatedOn": {
+        "type": "date"
+      },
+      "Id": {
+        "type": "long"
+      },
+      "Identifier": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "RegionName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "text",
+            "analyzer": "lowercase_keyword",
+            "fielddata": true
+          }
+        }
+      },
       "UpdatedBy": {
         "type": "text",
         "fields": {
@@ -54,6 +55,9 @@
             "ignore_above": 256
           }
         }
+      },
+      "UpdatedOn": {
+        "type": "date"
       }
     }
   }
