@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VGStandard.Core.ViewModels.Account;
+namespace VGStandard.WebAPI.ViewModels.Account;
 
 public class ExternalLoginViewModel
 {
     #region Properties
 
-    [Required] [EmailAddress] public string Email { get; set; }
+    [Required][EmailAddress] public string Email { get; set; }
 
     #endregion
 }

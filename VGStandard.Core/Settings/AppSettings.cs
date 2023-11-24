@@ -5,7 +5,7 @@ namespace VGStandard.Core.Settings;
 public class AppSettings
 {
 
-    public bool RecreatePostgresTables { get; set; }
+    public bool RecreatePostgresTables { get; set; } = true;
     public string AppHostname { get; set; }
     public int? MaxConcurrentUpgradedConnections { get; set; } = null;
     public int? MaxConcurrentConnections { get; set; } = null;
@@ -22,7 +22,7 @@ public class AppSettings
     public bool BulkPostgres { get; set; }
     public bool BulkElasticSearch { get; set; }
 
-    public string CertPass => @"vRrVg72gaYNdGF9rgQSJ";
+    public string CertPass => @"cert pass for redis";
 
     [Obsolete]
     public Dictionary<string, Dictionary<string, object>> ConnectedUsers = new Dictionary<string, Dictionary<string, object>>();

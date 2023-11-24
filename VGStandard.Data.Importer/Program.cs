@@ -79,11 +79,11 @@ public class Importer
 
     public async Task Run(CommandLineOptions options)
     {
-        if (options.RecreatePostgresTables || _settings.RecreatePostgresTables)
-        {
+        //if (options.RecreatePostgresTables || _settings.RecreatePostgresTables)
+        //{
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
-        }
+        //}
 
         bool useBulkPostgres = options.BulkPostgres || _settings.BulkPostgres;
         bool useBulkElasticsearch = options.BulkElasticsearch || _settings.BulkElasticSearch;

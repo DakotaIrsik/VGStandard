@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "VGStandard.DataImporter": {
+    "VGStandard.Data.Importer": {
       "commandName": "Project"
     },
     "Docker": {

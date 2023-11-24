@@ -22,14 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VGStandard.Application\VGStandard.Application.csproj" />
     <ProjectReference Include="..\VGStandard.Common.Web\VGStandard.Common.Web.csproj" />
-    <ProjectReference Include="..\VGStandard.Core\VGStandard.Core.csproj" />
-    <ProjectReference Include="..\VGStandard.DataImporter\VGStandard.Data.Importer.csproj" />
   </ItemGroup>
 
 </Project>

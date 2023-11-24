@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VGStandard.Core.ViewModels.Account;
+namespace VGStandard.WebAPI.ViewModels.Account;
 
 public class ResetPasswordViewModel
 {
@@ -17,7 +17,8 @@ public class ResetPasswordViewModel
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
-    [Required] [EmailAddress] 
+    [Required]
+    [EmailAddress]
     public string Email { get; set; }
     public string Token { get; set; }
 

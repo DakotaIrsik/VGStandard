@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VGStandard.Core.ViewModels.Account.Manage;
+namespace VGStandard.WebAPI.ViewModels.Account.Manage;
 
 public class IndexViewModel
 {
@@ -8,7 +8,7 @@ public class IndexViewModel
 
     public bool IsEmailConfirmed { get; set; }
 
-    [Required] [EmailAddress] public string Email { get; set; }
+    [Required][EmailAddress] public string Email { get; set; }
 
     [Phone]
     [Display(Name = "Phone number")]

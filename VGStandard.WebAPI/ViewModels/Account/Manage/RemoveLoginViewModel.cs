@@ -1,4 +1,4 @@
-﻿namespace VGStandard.Core.ViewModels.Account.Manage;
+﻿namespace VGStandard.WebAPI.ViewModels.Account.Manage;
 
 public class RemoveLoginViewModel
 {

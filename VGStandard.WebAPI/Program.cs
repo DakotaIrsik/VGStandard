@@ -42,6 +42,7 @@ builder.Host.UseSerilog(WebApplicationBuilderExtensions.GetSeriloger(settings));
 #region Build and Run
 var app = builder.Build();
 app.UseResponseCaching();
+app.UseAuthorization();
 app.UseSwaggerWithVersioning(app.Environment);
 app.UseRouting();
 app.UseCors("CorsPolicy");

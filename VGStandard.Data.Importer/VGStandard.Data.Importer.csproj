@@ -10,10 +10,26 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Regions.json" />
+    <None Remove="Releases.json" />
+    <None Remove="Roms.json" />
+    <None Remove="Systems.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Regions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Releases.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -29,21 +45,6 @@
     <ProjectReference Include="..\VGStandard.Common\VGStandard.Common.csproj" />
     <ProjectReference Include="..\VGStandard.Core\VGStandard.Core.csproj" />
     <ProjectReference Include="..\VGStandard.Infrastructure\VGStandard.Data.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Regions.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Releases.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Roms.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Systems.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

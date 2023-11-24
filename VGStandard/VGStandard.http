@@ -1,6 +1,0 @@
-@VGStandard_HostAddress = http://localhost:5174
-
-GET {{VGStandard_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VGStandard.Core.ViewModels.Account;
+namespace VGStandard.WebAPI.ViewModels.Account;
 
 public class LoginWithRecoveryCodeViewModel
 {

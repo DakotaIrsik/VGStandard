@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VGStandard.Core.ViewModels.Account;
+namespace VGStandard.WebAPI.ViewModels.Account;
 
 public class ForgotPasswordViewModel
 {
     #region Properties
 
-    [Required] 
+    [Required]
     [EmailAddress]
     [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
     public string Email { get; set; }

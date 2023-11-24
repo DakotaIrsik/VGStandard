@@ -3,19 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.WebAPI", "VGStandard\VGStandard.WebAPI.csproj", "{1F96CDD9-C885-489C-A52B-3A20F8D1F657}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Core", "VGStandard.Core\VGStandard.Core.csproj", "{BE58568D-D8A0-4850-B0D5-4590EEB304C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Common.Web", "VGStandard.Common.Web\VGStandard.Common.Web.csproj", "{37848ED8-21E6-46C5-A407-FEF4A873A85A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Data.Importer", "VGStandard.DataImporter\VGStandard.Data.Importer.csproj", "{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Common", "VGStandard.Common\VGStandard.Common.csproj", "{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.Application", "VGStandard.Application\VGStandard.Application.csproj", "{89B4DE92-203F-4975-8B50-97A6A65F0F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Application", "VGStandard.Application\VGStandard.Application.csproj", "{89B4DE92-203F-4975-8B50-97A6A65F0F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGStandard.Data.Infrastructure", "VGStandard.Infrastructure\VGStandard.Data.Infrastructure.csproj", "{7ECE3436-A8BD-4035-ACED-D4594D75D4B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Data.Infrastructure", "VGStandard.Infrastructure\VGStandard.Data.Infrastructure.csproj", "{7ECE3436-A8BD-4035-ACED-D4594D75D4B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34A5201A-2AEA-44D7-94B4-CBEE0FDDC3E0}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.Data.Importer", "VGStandard.Data.Importer\VGStandard.Data.Importer.csproj", "{BAA52376-1120-4503-962B-1624A8199F2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VGStandard.WebAPI", "VGStandard.WebAPI\VGStandard.WebAPI.csproj", "{21864CFE-9C40-432E-8AFA-3F1C820C71C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1F96CDD9-C885-489C-A52B-3A20F8D1F657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F96CDD9-C885-489C-A52B-3A20F8D1F657}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F96CDD9-C885-489C-A52B-3A20F8D1F657}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F96CDD9-C885-489C-A52B-3A20F8D1F657}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE58568D-D8A0-4850-B0D5-4590EEB304C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE58568D-D8A0-4850-B0D5-4590EEB304C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE58568D-D8A0-4850-B0D5-4590EEB304C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,10 +36,6 @@ Global
 		{37848ED8-21E6-46C5-A407-FEF4A873A85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37848ED8-21E6-46C5-A407-FEF4A873A85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37848ED8-21E6-46C5-A407-FEF4A873A85A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85FAD94C-9691-470F-B5A2-D75B79A3CFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF6F9C0-9ABF-4E9D-A52E-11717309F8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +48,14 @@ Global
 		{7ECE3436-A8BD-4035-ACED-D4594D75D4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ECE3436-A8BD-4035-ACED-D4594D75D4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ECE3436-A8BD-4035-ACED-D4594D75D4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA52376-1120-4503-962B-1624A8199F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA52376-1120-4503-962B-1624A8199F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA52376-1120-4503-962B-1624A8199F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA52376-1120-4503-962B-1624A8199F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21864CFE-9C40-432E-8AFA-3F1C820C71C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21864CFE-9C40-432E-8AFA-3F1C820C71C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21864CFE-9C40-432E-8AFA-3F1C820C71C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21864CFE-9C40-432E-8AFA-3F1C820C71C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
