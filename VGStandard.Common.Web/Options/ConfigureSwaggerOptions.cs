@@ -35,7 +35,7 @@ public class ConfigureSwaggerOptions : IConfigureNamedOptions<SwaggerGenOptions>
     {
         var info = new OpenApiInfo()
         {
-            Title = $"ZeroEyes Management {_settings.Application} WebAPI - ({_settings.Environment})",
+            Title = $"{_settings.Application} WebAPI - ({_settings.Environment})",
             Version = description.ApiVersion.ToString(),
             Description = $"{System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}"
         };

@@ -7,9 +7,9 @@ using VGStandard.Core.Metadata;
 using VGStandard.Core.Metadata.Paging;
 using VGStandard.Core.Settings;
 using VGStandard.WebAPI.ViewModels;
-using ZeroEyes.Management.Application.Services;
+using VGStandard.Application.Services;
 
-namespace ZeroEyes.Management.Services.BFF.Controllers.v1;
+namespace VGStandard.WebAPI.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]

@@ -9,13 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     - name: Build and push VGStandard.Data.Importer
       uses: docker/build-push-action@v2
       with:
@@ -23,21 +26,21 @@ jobs:
         file: ./VGStandard.Data.Importer/Dockerfile
         push: true
         tags: dakotairsik/vgstandard-data-importer:latest
+
     - name: Zip VGStandard.Data.Importer
       run: zip -r vgstandard-data-importer-bin.zip ./VGStandard.Data.Importer
-    - name: Upload VGStandard.Data.Importer Binaries
-      uses: actions/upload-artifact@v2
-      with:
-        name: vgstandard-data-importer
-        path: vgstandard-data-importer-bin.zip
+
+    - name: Set Release Tag Name
+      run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y'))" >> $GITHUB_ENV
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref_name }}
+        tag_name: ${{ env.RELEASE_TAG }}
+        release_name: Release ${{ env.RELEASE_TAG }}
         draft: false
         prerelease: false
 

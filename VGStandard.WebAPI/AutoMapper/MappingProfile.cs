@@ -3,7 +3,7 @@ using VGStandard.DataImporter.Models;
 using VGStandard.WebAPI.ViewModels;
 using Profile = AutoMapper.Profile;
 
-namespace ZeroEyes.Management.Services.BFF.AutoMapper;
+namespace VGStandard.Services.AutoMapper;
 
 public class MappingProfile : Profile
 {

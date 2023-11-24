@@ -1,6 +1,6 @@
 ﻿using VGStandard.Data.Infrastructure.Repositories.Interfaces;
 using VGStandard.Data.Infrastructure.Repositories.Postgres;
-using ZeroEyes.Management.Application.Services;
+using VGStandard.Application.Services;
 
 namespace VGStandard.WebAPI.Extensinos
 {

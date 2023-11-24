@@ -10,7 +10,7 @@ using VGStandard.Core.Settings;
 using VGStandard.Data.Infrastructure.Repositories.Interfaces;
 using VGStandard.DataImporter.Models;
 
-namespace ZeroEyes.Management.Application.Services;
+namespace VGStandard.Application.Services;
 
 public interface IRegionService
 {

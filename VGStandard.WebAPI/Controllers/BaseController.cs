@@ -9,7 +9,7 @@ using VGStandard.Common.Web.Responses;
 using VGStandard.Core.Metadata;
 using VGStandard.Core.Settings;
 
-namespace ZeroEyes.Management.Services.BFF.Controllers.v1;
+namespace VGStandard.WebAPI.Controllers;
 
 #if RELEASE
 [Authorize(AuthenticationSchemes = "Bearer")]
