@@ -19,10 +19,10 @@ COPY --from=publish /app/publish .
 
 RUN ls -al /app
 
-COPY ["VGStandard.Data.Importer/Roms.json", "./app/roms.json"]
-COPY ["VGStandard.Data.Importer/Releases.json", "./app/releases.json"]
-COPY ["VGStandard.Data.Importer/Regions.json", "./app/regions.json"]
-COPY ["VGStandard.Data.Importer/Systems.json", "./app/systems.json"]
+COPY ["VGStandard.Data.Importer/Roms.json", "/app/roms.json"]
+COPY ["VGStandard.Data.Importer/Releases.json", "/app/releases.json"]
+COPY ["VGStandard.Data.Importer/Regions.json", "/app/regions.json"]
+COPY ["VGStandard.Data.Importer/Systems.json", "/app/systems.json"]
 
 #COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticRoms.json", "./app/ElasticRoms.json"]
 #COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticReleases.json", "./app/ElasticReleases.json"]
