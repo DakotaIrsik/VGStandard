@@ -1,8 +1,11 @@
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using VGStandard.Common.Web.ActionFilters;
 using VGStandard.Common.Web.Extensions;
 using VGStandard.Common.Web.Middleware;
 using VGStandard.Core.Settings;
+using VGStandard.Data.Infrastructure.Contexts;
+using VGStandard.WebAPI.Extensinos;
 
 var builder = WebApplication.CreateBuilder(args);
 var settings = builder.Configuration.Get<AppSettings>();
@@ -16,10 +19,12 @@ builder.Services.AddCors(opt => opt.AddPolicy("CorsPolicy", c =>
      .AllowAnyHeader()
      .AllowAnyMethod();
 }));
-builder.Services.AddVault(settings);
 builder.Services.AddCacheService(settings);
 builder.Services.AddSwagger(builder.Environment, "VGStandard");
 builder.Services.AddAppSettingsIoC(builder.Configuration);
+builder.Services.AddDbContext<VideoGameContext>(opts => opts.UseNpgsql(settings.ConnectionStrings.Postgres));
+builder.Services.AddServiceLayer();
+builder.Services.AddDataAccessLayer();
 builder.Services.AddScoped(sp => new PoorManClientCredentialFilter(settings.PoorManClientCredential, builder.Environment));
 builder.Services.AddRouting();
 builder.Services.AddAutoMapper();

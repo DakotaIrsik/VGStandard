@@ -4,11 +4,9 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NpgsqlTypes;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
-using Serilog.Sinks.PostgreSQL;
 using System.Net;
 using System.Security.Authentication;
 using VGStandard.Common.Web.Middleware;
@@ -77,8 +75,7 @@ public static class WebApplicationBuilderExtensions
             options.Limits.MaxConcurrentUpgradedConnections = settings.MaxConcurrentUpgradedConnections; //These are wss for SigR that don't hit a Db.
 
             options.Listen(IPAddress.Any, 80);
-            options.Listen(IPAddress.Any, 443,
-                listenOptions => { listenOptions.UseHttps("ze.pfx", @"vRrVg72gaYNdGF9rgQSJ"); });
+            options.Listen(IPAddress.Any, 443);
         });
 
         return builder;

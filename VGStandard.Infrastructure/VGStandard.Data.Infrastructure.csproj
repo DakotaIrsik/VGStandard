@@ -10,4 +10,8 @@
     <ProjectReference Include="..\VGStandard.Core\VGStandard.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\ElasticSearch\" />
+  </ItemGroup>
+
 </Project>

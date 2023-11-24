@@ -195,16 +195,14 @@ public static class ServiceCollectionExtensions
     }
 
 
-    private static IServiceCollection AddSwaggerVersioning(this IServiceCollection services, string environment, string application)
+    private static IServiceCollection AddSwaggerVersioning(this IServiceCollection services, string environment, string project)
     {
         var basePath = AppContext.BaseDirectory;
-        var apiComments = Path.Combine(basePath, $"VGStandard.Services.{application}.xml");
-        var applicationComments = Path.Combine(basePath, "VGStandard.Application.xml");
+        var apiComments = Path.Combine(basePath, $"{project}.WebAPI.xml");
 
         services.AddSwaggerGen(c =>
         {
             c.IncludeXmlComments(apiComments);
-            c.IncludeXmlComments(applicationComments);
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Description = "Jwt Authorization",

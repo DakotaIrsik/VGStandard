@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\VGStandard.Common.Web\VGStandard.Common.Web.csproj" />
+    <ProjectReference Include="..\VGStandard.Common\VGStandard.Common.csproj" />
+    <ProjectReference Include="..\VGStandard.Core\VGStandard.Core.csproj" />
+    <ProjectReference Include="..\VGStandard.Infrastructure\VGStandard.Data.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
