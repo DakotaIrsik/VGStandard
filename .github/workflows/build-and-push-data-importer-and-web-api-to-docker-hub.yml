@@ -1,3 +1,9 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches: [ master ]
+
 jobs:
   build-and-push-data-importer:
     runs-on: ubuntu-latest
