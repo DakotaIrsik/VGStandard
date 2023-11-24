@@ -30,3 +30,23 @@ jobs:
       with:
         name: vgstandard-data-importer
         path: vgstandard-data-importer-bin.zip
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload VGStandard.Data.Importer Binary as Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./vgstandard-data-importer-bin.zip
+        asset_name: vgstandard-data-importer-bin.zip
+        asset_content_type: application/zip
