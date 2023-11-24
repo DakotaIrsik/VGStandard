@@ -81,17 +81,6 @@ jobs:
     - name: Set Release Tag Name
       run: echo "RELEASE_TAG=$(echo master-$(date +'%m-%d-%Y'))" >> $GITHUB_ENV
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE_TAG }}
-        release_name: Release ${{ env.RELEASE_TAG }}
-        draft: false
-        prerelease: false
-
     - name: Upload VGStandard.WebAPI Binary as Release Asset
       uses: actions/upload-release-asset@v1
       env:
