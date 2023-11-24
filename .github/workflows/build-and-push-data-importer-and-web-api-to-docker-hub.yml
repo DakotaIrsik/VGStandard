@@ -16,13 +16,21 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push VGStandard.WebAPI
+    - name: Build and push VGStandard.Data.Importer
       uses: docker/build-push-action@v2
       with:
         context: .
         file: ./VGStandard.Data.Importer/Dockerfile
         push: true
         tags: dakotairsik/vgstandard-data-importer:latest
+    - name: Zip VGStandard.Data.Importer /bin folder
+      run: zip -r vgstandard-data-importer-bin.zip ./VGStandard.Data.Importer/bin
+    - name: Upload VGStandard.Data.Importer Binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: vgstandard-data-importer-bin
+        path: vgstandard-data-importer-bin.zip
+
   build-and-push-webapi:
     runs-on: ubuntu-latest
     steps:
@@ -41,3 +49,10 @@ jobs:
         file: ./VGStandard.WebAPI/Dockerfile
         push: true
         tags: dakotairsik/vgstandard-webapi:latest
+    - name: Zip VGStandard.WebAPI /bin folder
+      run: zip -r vgstandard-webapi-bin.zip ./VGStandard.WebAPI/bin
+    - name: Upload VGStandard.WebAPI Binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: vgstandard-webapi-bin
+        path: vgstandard-webapi-bin.zip
