@@ -13,7 +13,7 @@ using VGStandard.Common.Web.Extensions;
 using VGStandard.Common.Web.Services;
 using VGStandard.Core.Metadata;
 using VGStandard.Core.Settings;
-using VGStandard.Data.Contexts;
+using VGStandard.Data.Infrastructure.Contexts;
 using VGStandard.DataImporter.Models;
 
 namespace VGStandard.Data.Importer;
@@ -127,7 +127,6 @@ public class Importer
     }
 
 
-
     private void BulkPopulatePostgres()
     {
          BulkPopulateTable<Region>("regions.json");
@@ -136,12 +135,20 @@ public class Importer
          BulkPopulateTable<Release>("releases.json");
     }
 
+    private void PopulateElastic()
+    {
+        PopulateIndex<Region>("regions.json", "regions");
+        PopulateIndex<GameSystem>("systems.json", "systems");
+        PopulateIndex<Rom>("roms.json", "roms");
+        PopulateIndex<Release>("releases.json", "releases");
+    }
+
     private async Task PopulatePostgres()
     {
-        await PopulateTable<Region>("regions.json");
-        await PopulateTable<GameSystem>("systems.json");
-        await PopulateTable<Rom>("roms.json");
-        await PopulateTable<Release>("releases.json");
+        PopulateTable<Region>("regions.json");
+        PopulateTable<GameSystem>("systems.json");
+        PopulateTable<Rom>("roms.json");
+        PopulateTable<Release>("releases.json");
     }
 
     private async Task BulkPopulateElastic()
@@ -152,15 +159,7 @@ public class Importer
         BulkPopulateElastic<Release>("releases.json", "releases");
     }
 
-    private async Task PopulateElastic()
-    {
-        PopulateIndex<Region>("regions.json", "regions");
-        PopulateIndex<GameSystem>("systems.json", "systems");
-        PopulateIndex<Rom>("roms.json", "roms");
-        PopulateIndex<Release>("releases.json", "releases");
-    }
-
-    private async Task PopulateTable<T>(string filePath) where T : Trackable, new()
+    private void PopulateTable<T>(string filePath) where T : Trackable, new()
     {
         try
         {
