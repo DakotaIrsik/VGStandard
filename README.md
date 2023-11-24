@@ -59,4 +59,7 @@ dotnet run VGStandard.Data.Importer.dll --skip-postgres --fill-elasticsearch="Yo
 dotnet run VGStandard.Data.Importer.dll --bulk-elasticsearch --bulk-postgres
 ```
 
+![image](https://github.com/DakotaIrsik/VGStandard/assets/26256978/ccd7d7df-aa2f-4b74-b548-bc9daf160667)
+
+
 Contributions, issues, and feature requests are welcome. Feel free to check issues page if you want to contribute.
