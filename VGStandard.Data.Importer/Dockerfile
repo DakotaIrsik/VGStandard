@@ -17,6 +17,8 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
+RUN ls -al /app
+
 COPY ["VGStandard.Data.Importer/Roms.json", "./app/roms.json"]
 COPY ["VGStandard.Data.Importer/Releases.json", "./app/releases.json"]
 COPY ["VGStandard.Data.Importer/Regions.json", "./app/regions.json"]
@@ -28,4 +30,6 @@ COPY ["VGStandard.Data.Importer/Releases.json", "./app/publish"]
 COPY ["VGStandard.Data.Importer/Regions.json", "./app/publish"]
 COPY ["VGStandard.Data.Importer/Systems.json", "./app/publish"]
 
+
+#print the contents of everything available in the current directory or parent, all directories / subfiles related to the code in this build process
 ENTRYPOINT ["dotnet", "VGStandard.Data.Importer.dll"]
