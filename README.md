@@ -16,8 +16,15 @@ Prerequisites
 
 ### Installation
 Clone the repository or download the source code.
-
 Ensure PostgreSQL and Elasticsearch are running on your machine or use Docker to spin up containers.
+
+## Recommended Docker Compose
+```
+git clone https://github.com/DakotaIrsik/VGStandard.git
+cd VGStandard
+docker-compose up
+navigate to -> http://localhost:5001/swagger/index.html
+```
 
 #### Running Elasticsearch with Docker
 ```
@@ -59,6 +66,13 @@ dotnet run VGStandard.Data.Importer.dll --skip-postgres --fill-elasticsearch="Yo
 dotnet run VGStandard.Data.Importer.dll --bulk-elasticsearch --bulk-postgres
 ```
 
+### Recommended Docker Compose
+```
+git clone https://github.com/DakotaIrsik/VGStandard.git
+cd VGStandard
+docker-compose up
+navigate to -> http://localhost:5001/swagger/index.html
+```
 ![image](https://github.com/DakotaIrsik/VGStandard/assets/26256978/ccd7d7df-aa2f-4b74-b548-bc9daf160667)
 
 
