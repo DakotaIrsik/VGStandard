@@ -48,6 +48,25 @@ jobs:
         asset_name: vgstandard-data-importer-bin.zip
         asset_content_type: application/zip
         
+    - name: Restore dependencies for VGStandard.WebAPI
+      run: dotnet restore "./VGStandard.WebAPI/VGStandard.WebAPI.csproj"
+
+    - name: Publish VGStandard.WebAPI
+      run: dotnet publish "./VGStandard.WebAPI/VGStandard.WebAPI.csproj" -c Release -o ./webapi-app
+
+    - name: Zip VGStandard.WebAPI
+      run: zip -r vgstandard-webapi-bin.zip ./webapi-app
+
+    - name: Upload VGStandard.WebAPI Binary as Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./vgstandard-webapi-bin.zip
+        asset_name: vgstandard-webapi-bin.zip
+        asset_content_type: application/zip    
+        
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
@@ -61,3 +80,13 @@ jobs:
         file: ./VGStandard.Data.Importer/Dockerfile
         push: true
         tags: dakotairsik/vgstandard-data-importer:latest
+        
+    - name: Build and push VGStandard.WebAPI Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./VGStandard.WebAPI/Dockerfile
+        push: true
+        tags: dakotairsik/vgstandard-webapi:latest
+
+
