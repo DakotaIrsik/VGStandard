@@ -109,10 +109,10 @@ public class Importer
             _elasticSearchService.DeleteIndex("roms");
             _elasticSearchService.DeleteIndex("releases");
 
-            _elasticSearchService.CreateIndex("systems", File.ReadAllText("Models\\ElasticSearch\\Mappings\\ElasticSystems.json"));
-            _elasticSearchService.CreateIndex("regions", File.ReadAllText("Models\\ElasticSearch\\Mappings\\ElasticRegions.json"));
-            _elasticSearchService.CreateIndex("roms", File.ReadAllText("Models\\ElasticSearch\\Mappings\\ElasticRoms.json"));
-            _elasticSearchService.CreateIndex("releases", File.ReadAllText("Models\\ElasticSearch\\Mappings\\ElasticReleases.json"));
+            _elasticSearchService.CreateIndex("systems", File.ReadAllText("ElasticSystems.json"));
+            _elasticSearchService.CreateIndex("regions", File.ReadAllText("ElasticRegions.json"));
+            _elasticSearchService.CreateIndex("roms", File.ReadAllText("ElasticRoms.json"));
+            _elasticSearchService.CreateIndex("releases", File.ReadAllText("ElasticReleases.json"));
 
 
             if (useBulkElasticsearch)

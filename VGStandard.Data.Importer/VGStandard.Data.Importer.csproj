@@ -10,6 +10,10 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="ElasticRegions.json" />
+    <None Remove="ElasticReleases.json" />
+    <None Remove="ElasticRoms.json" />
+    <None Remove="ElasticSystems.json" />
     <None Remove="Regions.json" />
     <None Remove="Releases.json" />
     <None Remove="Roms.json" />
@@ -18,6 +22,18 @@
 
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElasticRegions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElasticReleases.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElasticRoms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElasticSystems.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Regions.json">

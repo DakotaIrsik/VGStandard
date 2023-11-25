@@ -5,28 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Models\ElasticSearch\Mappings\ElasticRegions.json" />
-    <None Remove="Models\ElasticSearch\Mappings\ElasticReleases.json" />
-    <None Remove="Models\ElasticSearch\Mappings\ElasticRoms.json" />
-    <None Remove="Models\ElasticSearch\Mappings\ElasticSystems.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Models\ElasticSearch\Mappings\ElasticRoms.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\ElasticSearch\Mappings\ElasticRegions.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\ElasticSearch\Mappings\ElasticReleases.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\ElasticSearch\Mappings\ElasticSystems.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0" />
