@@ -24,10 +24,10 @@ COPY ["VGStandard.Data.Importer/Releases.json", "/app/releases.json"]
 COPY ["VGStandard.Data.Importer/Regions.json", "/app/regions.json"]
 COPY ["VGStandard.Data.Importer/Systems.json", "/app/systems.json"]
 
-#COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticRoms.json", "./app/ElasticRoms.json"]
-#COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticReleases.json", "./app/ElasticReleases.json"]
-#COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticRegions.json", "./app/ElasticRegions.json"]
-#COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticSystems.json", "./app/ElasticSystems.json"]
+COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticRoms.json", "/app/ElasticRoms.json"]
+COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticReleases.json", "/app/ElasticReleases.json"]
+COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticRegions.json", "/app/ElasticRegions.json"]
+COPY ["VGStandard.Data.Importer/Models/ElasticSearch/Mappings/ElasticSystems.json", "/app/ElasticSystems.json"]
 
 RUN ls -al /app
 
