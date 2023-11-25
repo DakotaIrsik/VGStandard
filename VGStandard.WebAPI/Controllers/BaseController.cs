@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Dynamic;
@@ -10,10 +9,6 @@ using VGStandard.Core.Metadata;
 using VGStandard.Core.Settings;
 
 namespace VGStandard.WebAPI.Controllers;
-
-#if RELEASE
-[Authorize(AuthenticationSchemes = "Bearer")]
-#endif
 
 public partial class BaseController : ControllerBase
 {
